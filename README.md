@@ -13,4 +13,4 @@ If you have any questions or support requests, please reach out to us at:
 We value your privacy. You can view our [Privacy Policy](./privacy.md) here.
 
 ---
-© 2026 Lumino Studio Pty Ltd. All rights reserved.
+© 2026 Lumino Studio Pty Ltd. ABN: 89695615233. All rights reserved.
