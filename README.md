@@ -3,7 +3,7 @@ Welcome to our official website.
 We are a software development studio based in Australia, dedicated to creating high-quality iOS applications.
 
 ## Our App
-* **OmniSpark (forthcoming)** An all-round skill-learning application for children.
+* **OmniSpark (forthcoming):** An all-round skill-learning application for children.
 
 ## Contact Us
 If you have any questions or support requests, please reach out to us at:
