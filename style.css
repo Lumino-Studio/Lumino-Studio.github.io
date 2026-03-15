@@ -429,3 +429,54 @@ p {
     text-align: center;
     color: #444;
 }
+
+/* Section Spacing for Legal/Support Pages */
+section {
+    margin-bottom: 50px;
+    animation: fadeIn 0.8s ease;
+}
+
+/* The Support Contact Box */
+.contact-box {
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 4px solid #64ffda; /* Teal accent for support */
+    padding: 20px 25px;
+    margin-top: 20px;
+    border-radius: 0 12px 12px 0;
+    line-height: 1.6;
+    color: #ccd6f6; /* Slightly brighter text for readability */
+}
+
+.contact-box strong {
+    color: #64ffda;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+/* Specific styling for the Terms list */
+#terms ul {
+    list-style: none;
+    padding: 0;
+}
+
+#terms li {
+    margin-bottom: 20px;
+    padding-left: 25px;
+    position: relative;
+}
+
+/* Custom bullet points to match your 'Expertise' cards */
+#terms li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: #e73c7e; /* Pink arrow */
+    font-weight: bold;
+}
+
+#terms li strong {
+    color: #f8f9fa; /* Off-white for term titles */
+    display: block;
+    margin-bottom: 4px;
+}
