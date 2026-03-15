@@ -263,6 +263,48 @@
             0% { transform: translateX(-20%) translateY(-20%); }
             100% { transform: translateX(20%) translateY(20%); }
         }
+
+        .card {
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            max-height: 200px; /* Initial collapsed height */
+        }
+        
+        .card.expanded {
+            max-height: 600px; /* Large enough to show all content */
+            border-image: var(--rainbow-grad) 1; /* Full rainbow border when open */
+        }
+        
+        .extra-content {
+            display: none;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .card.expanded .extra-content {
+            display: block;
+            opacity: 1;
+        }
+        
+        .expand-icon {
+            float: right;
+            color: #64ffda;
+            transition: transform 0.3s ease;
+        }
+        
+        .card.expanded .expand-icon {
+            transform: rotate(45deg); /* Turns + into x */
+            color: #e73c7e;
+        }
+        
+        .card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-5px);
+        }
     </style>
 </head>
 <body>
@@ -278,24 +320,28 @@
     <p class="tagline">Where Digital Intelligence Meets Organic Growth.</p>
 
     <div class="content-section">
-        <div class="card">
-            <h3>About Us</h3>
-            <p>Lumino Studio Pty Ltd (ABN: 89695615233) is a registered Australian proprietary limited company. We are a software development studio based in Sydney, dedicated to creating high-quality educational iOS applications for learners of all ages. Our vision is to support life-long learning using technology.</p>
+        <div class="card" onclick="toggleCard(this)">
+            <h3>About Us <span class="expand-icon">+</span></h3>
+            <p>Lumino Studio Pty Ltd is a registered Australian proprietary limited company based in Sydney...</p>
+            <div class="extra-content">
+                <p>Our mission is to bridge the gap between complex neural engineering and intuitive, organic learning experiences for children under 18.</p>
+            </div>
         </div>
         
-        <div class="card">
-            <h3>Expertise</h3>
+        <div class="card" onclick="toggleCard(this)">
+            <h3>Expertise <span class="expand-icon">+</span></h3>
             <ul class="skills-list">
                 <li>AI & Machine Learning</li>
                 <li>Educational App Development</li>
-                <li>Data Science Visualization</li>
-                <li>Creative Media & Design</li>
             </ul>
-            
-            <h3>Our App</h3>
-            <ul class="skills-list">
-                <li>OmniSpark (forthcoming): An all-round skill-learning application for children.</li>
-            </ul>
+            <div class="extra-content">
+                <ul class="skills-list">
+                    <li>Data Science Visualization</li>
+                    <li>Creative Media & Design</li>
+                </ul>
+                <h3>Our App</h3>
+                <p>OmniSpark (forthcoming): An all-round skill-learning application for children.</p>
+            </div>
         </div>
     </div>
 
@@ -317,13 +363,22 @@
 
     <script>
         const topBtn = document.getElementById("backToTop");
+
         window.onscroll = function() {
-            if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+            // This check works across all browsers (Mobile, Chrome, Safari, Firefox)
+            const scrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+            
+            if (scrollPos > 300) {
                 topBtn.style.display = "block";
             } else {
                 topBtn.style.display = "none";
             }
         };
+        
+        // Expand/Collapse Function
+        function toggleCard(cardElement) {
+            cardElement.classList.toggle('expanded');
+        }
     </script>
 
 </body>
