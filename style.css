@@ -96,12 +96,11 @@ h1 {
     100% { filter: hue-rotate(360deg) drop-shadow(0 0 15px rgba(168, 85, 247, 0.5)); }
 }
 
-p {
-    font-size: 1.1rem;
-    color: #8892b0;
-    max-width: none;
+p, li {
+    color: #8892b0 !important;
     line-height: 1.8;
-    margin-bottom: 40px;
+    max-width: none !important; /* Forces it to fill the container */
+    width: 100%;
 }
 
 .cta-button {
@@ -352,11 +351,12 @@ p {
 
 /* Container for legal pages to keep text readable */
 .container {
-    max-width: 1100px;
-    width: 95%;
+    max-width: 1100px; /* Adjust this to 100% if you want it to touch the edges */
+    width: 90%;
     margin: 40px auto;
-    line-height: 1.8;
-    color: #8892b0; /* Consistent grey-blue body text */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Keeps text left-aligned in the wide container */
 }
 
 /* Legal Page Headings */
@@ -375,9 +375,10 @@ p {
 }
 
 /* List Styling */
-.container ul {
+.container ul, .container ol {
+    width: 100%;
     padding-left: 20px;
-    margin-bottom: 20px;
+    box-sizing: border-box;
 }
 
 .container li {
@@ -443,6 +444,8 @@ section {
 
 /* The Support Contact Box */
 .contact-box {
+    width: 100%;
+    box-sizing: border-box;
     background: rgba(255, 255, 255, 0.03);
     border-left: 4px solid #64ffda; /* Teal accent for support */
     padding: 20px 25px;
