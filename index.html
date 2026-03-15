@@ -76,7 +76,7 @@
             margin-bottom: 10px;
             text-transform: uppercase;
             
-            /* The Rainbow Gradient */
+            /* Static Rainbow Gradient */
             background: linear-gradient(
                 to right, 
                 #a855f7, #ec4899, #3b82f6, #22c55e, #eab308, #ef4444
@@ -84,13 +84,20 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         
-            /* The Glow Effect (No sweeping/animation) */
-            filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.4)) 
-                    drop-shadow(0 0 20px rgba(59, 130, 246, 0.2));
+            /* The Glow */
+            filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.4));
+        
+            /* The Color-Cycle Animation */
+            animation: colorCycle 8s linear infinite;
             
             display: inline-block;
         }
 
+        @keyframes colorCycle {
+            0% { filter: hue-rotate(0deg) drop-shadow(0 0 10px rgba(168, 85, 247, 0.4)); }
+            100% { filter: hue-rotate(360deg) drop-shadow(0 0 10px rgba(168, 85, 247, 0.4)); }
+        }
+        
         p {
             font-size: 1.1rem;
             color: #8892b0;
