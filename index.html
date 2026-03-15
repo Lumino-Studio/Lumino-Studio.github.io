@@ -149,74 +149,71 @@
             cursor: pointer;
             overflow: hidden;
             
-            /* Use a slightly larger max-height for the collapsed state */
+            /* Set a consistent height for the collapsed state */
             max-height: 70px; 
             
-            /* Smooth transition for opening and closing */
             transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease;
             width: 100%;
-            
-            /* These two lines ensure the header stays centered vertically */
             display: flex;
             flex-direction: column;
+
+            -webkit-tap-highlight-color: transparent; /* Removes the blue box when tapping on mobile */
         }
         
         .card.expanded {
-            max-height: 1000px; /* Large enough for all content */
+            max-height: 1000px; /* Expands to fit content */
         }
         
         .card-header {
-            /* flex-grow ensures the header takes up the available space when collapsed */
-            flex: 0 0 70px; 
+            /* This height must match the card's collapsed max-height */
+            height: 70px; 
             display: flex;
-            align-items: center; /* This vertically centers the text */
-            padding: 0 25px;    /* Removed vertical padding to let flex-alignment work */
+            align-items: center; /* Vertically centers the header text */
+            padding: 0 25px;
             box-sizing: border-box;
         }
         
         .card-header h3 {
             margin: 0;
-            width: 100%; /* Ensures the icon pushes to the right */
+            width: 100%;
             color: #e73c7e;
             font-size: 1.1rem;
             text-transform: uppercase;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            line-height: 1; /* Prevents font leading from pushing text down */
         }
         
         .card-body {
-            padding: 10px 25px 30px 25px; /* Added back a bit of top padding for the body text */
+            padding: 10px 25px 30px 25px;
             opacity: 0;
-            transition: opacity 0.4s ease;
-            width: 100%;
-            box-sizing: border-box;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
         }
         
+        .card.expanded .card-body {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .expand-icon {
+            color: #64ffda;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .card.expanded .expand-icon {
+            transform: rotate(45deg);
+            color: #ef4444;
+        }
+
         /* Make text inside the body use the full width */
         .card-body p {
             width: 100%;
             max-width: none; /* Removes any previous 500px limits */
             text-align: justify; /* Optional: gives a clean 'block' look to text */
             margin-bottom: 15px;
-        }
-        
-        .card.expanded .card-body {
-            display: block;
-            opacity: 1;
-            /* This delay makes the text appear AFTER the card slides open */
-            transition: opacity 0.5s ease 0.2s;
-        }
-
-        .expand-icon {
-            float: right;
-            color: #64ffda;
-            transition: transform 0.3s ease;
-        }
-        
-        .card.expanded .expand-icon {
-            transform: rotate(45deg);
-            color: #ef4444; /* Changes to red/pink when open */
         }
         
         /* Improved Skills List to fill space */
