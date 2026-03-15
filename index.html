@@ -159,9 +159,21 @@
         }
 
         .card.expanded .card-body {
+            display: block;
             opacity: 1;
-            display: block; /* Ensure it isn't set to 'none' elsewhere */
-            transition: opacity 0.4s ease;
+            /* This delay makes the text appear AFTER the card slides open */
+            transition: opacity 0.5s ease 0.2s;
+        }
+
+        .expand-icon {
+            float: right;
+            color: #64ffda;
+            transition: transform 0.3s ease;
+        }
+        
+        .card.expanded .expand-icon {
+            transform: rotate(45deg);
+            color: #ef4444; /* Changes to red/pink when open */
         }
         
         .card-header {
@@ -268,6 +280,9 @@
                 height: auto;
                 padding: 50px 0;
             }
+            .card-body p {
+                text-align: left;
+            }
         }
 
         .light-beam {
@@ -339,6 +354,8 @@
         <a href="mailto:info@lumino.au" class="cta-button">Get In Touch</a>
     </div>
 
+    <button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+    
     <footer class="site-footer">
         <div style="color: #444;">
             &copy; 2026 Lumino Studio Pty Ltd. ABN: 89695615233. All rights reserved.
