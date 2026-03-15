@@ -157,6 +157,12 @@
             max-height: 1000px; /* High enough to never cut off text */
             background: rgba(255, 255, 255, 0.08);
         }
+
+        .card.expanded .card-body {
+            opacity: 1;
+            display: block; /* Ensure it isn't set to 'none' elsewhere */
+            transition: opacity 0.4s ease;
+        }
         
         .card-header {
             padding: 18px 25px;
@@ -189,6 +195,7 @@
             width: 100%;
         }
 
+        
         .contact-area {
             display: flex;
             align-items: center;
@@ -359,15 +366,15 @@
         function toggleCard(selectedCard) {
             const allCards = document.querySelectorAll('.card');
             
-            // Check if the clicked card is already open
+            // 1. Check if the clicked card is already open
             const isAlreadyExpanded = selectedCard.classList.contains('expanded');
         
-            // Step 1: Retract ALL cards
+            // 2. Close all other cards
             allCards.forEach(card => {
                 card.classList.remove('expanded');
             });
         
-            // Step 2: If the clicked card wasn't already open, expand it now
+            // 3. If it wasn't open, open it now
             if (!isAlreadyExpanded) {
                 selectedCard.classList.add('expanded');
             }
