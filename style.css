@@ -480,33 +480,3 @@ section {
     display: block;
     margin-bottom: 4px;
 }
-
-/* 1. Global Body Text (Paragraphs and Lists) */
-p, li {
-    color: #8892b0 !important; /* Forces the grey-blue color everywhere */
-    line-height: 1.8;
-}
-
-/* 2. Global Headings (Pink) */
-h2, h3 {
-    color: #e73c7e !important; /* Forces Lumino Pink for all section headers */
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* 3. Global Highlights (Teal) */
-strong {
-    color: #64ffda !important; /* Forces the Teal color for bold text */
-    font-weight: 600;
-}
-
-/* 4. Global Links */
-a {
-    color: #23a6d5;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-a:hover {
-    color: #64ffda;
-}
