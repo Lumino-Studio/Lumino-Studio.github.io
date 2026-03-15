@@ -135,9 +135,9 @@
         .content-section {
             display: flex;
             flex-direction: column;
-            gap: 15px; /* Space between the stacked headers */
-            max-width: 800px;
-            width: 90%;
+            gap: 15px;
+            max-width: 900px; /* Increased width to give content more room */
+            width: 95%;
             margin: 40px auto;
         }
         
@@ -148,13 +148,13 @@
             border-image: linear-gradient(to right, #e73c7e, #23a6d5) 1;
             cursor: pointer;
             overflow: hidden;
-            /* Initial state: Only show the header */
             max-height: 60px; 
             transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease;
+            width: 100%; /* Ensure card takes full container width */
         }
         
         .card.expanded {
-            max-height: 500px; /* Large enough for content */
+            max-height: 1000px; /* High enough to never cut off text */
             background: rgba(255, 255, 255, 0.08);
         }
         
@@ -162,34 +162,31 @@
             padding: 18px 25px;
         }
         
-        .card-header h3 {
-            margin: 0;
-            color: #e73c7e;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
         .card-body {
-            padding: 0 25px 25px 25px;
+            padding: 0 25px 30px 25px; /* Matching horizontal padding to header */
             opacity: 0;
             transition: opacity 0.4s ease;
+            width: 100%;
+            box-sizing: border-box; /* Includes padding in width calculation */
         }
         
-        .card.expanded .card-body {
-            opacity: 1;
+        /* Make text inside the body use the full width */
+        .card-body p {
+            width: 100%;
+            max-width: none; /* Removes any previous 500px limits */
+            text-align: justify; /* Optional: gives a clean 'block' look to text */
+            margin-bottom: 15px;
         }
         
-        .expand-icon {
-            color: #64ffda;
-            transition: transform 0.3s ease;
-        }
-        
-        .card.expanded .expand-icon {
-            transform: rotate(45deg);
-            color: #ef4444;
+        /* Improved Skills List to fill space */
+        .skills-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Items fill width in columns */
+            gap: 10px;
+            width: 100%;
         }
 
         .contact-area {
@@ -308,30 +305,25 @@
                 <h3>About Us <span class="expand-icon">+</span></h3>
             </div>
             <div class="card-body">
-                <p>Lumino Studio Pty Ltd (ABN: 89695615233) is a registered Australian proprietary limited company based in Sydney. We are a software development studio dedicated to creating high-quality educational iOS applications for learners of all ages.</p>
-            </div>
-        </div>
-        
-        <div class="card" onclick="toggleCard(this)">
-            <div class="card-header">
-                <h3>Expertise <span class="expand-icon">+</span></h3>
-            </div>
-            <div class="card-body">
-                <ul class="skills-list">
-                    <li>AI & Machine Learning</li>
-                    <li>Educational App Development</li>
-                    <li>Data Science Visualization</li>
-                    <li>Creative Media & Design</li>
-                </ul>
+                <p>Lumino Studio Pty Ltd (ABN: 89695615233) is a registered Australian proprietary limited company based in Sydney. We are a software development studio dedicated to creating high-quality educational iOS applications for learners of all ages. Our mission is to support life-long learning using technology.</p>
             </div>
         </div>
     
         <div class="card" onclick="toggleCard(this)">
             <div class="card-header">
-                <h3>Our App: OmniSpark <span class="expand-icon">+</span></h3>
+                <h3>Our APPs <span class="expand-icon">+</span></h3>
             </div>
             <div class="card-body">
-                <p>(Forthcoming): An all-round skill-learning application for children, focusing on intuitive interaction and organic growth.</p>
+                <p>OmniSpark (Forthcoming): An all-round skill-learning application for children, focusing on intuitive interaction and organic growth.</p>
+            </div>
+        </div>
+
+        <div class="card" onclick="toggleCard(this)">
+            <div class="card-header">
+                <h3>Contact Us <span class="expand-icon">+</span></h3>
+            </div>
+            <div class="card-body">
+                <p>If you have any questions or support requests, please reach out to us at: <a href="mailto:info@lumino.au">info@lumino.au</a>. We will respond in 48 hours.</p>
             </div>
         </div>
     </div> 
