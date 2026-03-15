@@ -134,8 +134,8 @@
 
         .content-section {
             display: flex;
-            flex-direction: column; /* Stacks them vertically */
-            gap: 30px; /* Space between cards */
+            flex-direction: column;
+            gap: 15px; /* Space between the stacked headers */
             max-width: 800px;
             width: 90%;
             margin: 40px auto;
@@ -143,44 +143,53 @@
         
         .card {
             background: rgba(255, 255, 255, 0.04);
-            border-radius: 16px;
+            border-radius: 12px;
             border: 1px solid transparent;
-            /* Keeps the signature rainbow border */
             border-image: linear-gradient(to right, #e73c7e, #23a6d5) 1;
-            padding: 30px;
-            transition: transform 0.3s ease, background 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+            /* Initial state: Only show the header */
+            max-height: 60px; 
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease;
         }
         
-        .card:hover {
-            background: rgba(255, 255, 255, 0.07);
-            transform: translateY(-5px); /* Subtle lift on hover */
+        .card.expanded {
+            max-height: 500px; /* Large enough for content */
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .card-header {
+            padding: 18px 25px;
         }
         
         .card-header h3 {
-            margin: 0 0 15px 0;
+            margin: 0;
             color: #e73c7e;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
-        .card-body p, .card-body li {
-            color: #8892b0;
-            line-height: 1.6;
-            font-size: 1.05rem;
+        .card-body {
+            padding: 0 25px 25px 25px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
         
-        .skills-list {
-            list-style: none;
-            padding: 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Auto-aligns list items */
-            gap: 10px;
+        .card.expanded .card-body {
+            opacity: 1;
         }
         
-        .skills-list li::before {
-            content: "▹ ";
+        .expand-icon {
             color: #64ffda;
+            transition: transform 0.3s ease;
+        }
+        
+        .card.expanded .expand-icon {
+            transform: rotate(45deg);
+            color: #ef4444;
         }
 
         .contact-area {
@@ -294,24 +303,38 @@
     <p class="tagline">Where Digital Intelligence Meets Organic Growth.</p>
 
     <div class="content-section">
-        <div class="card">
+        <div class="card" onclick="toggleCard(this)">
             <div class="card-header">
-                <h3>About Us</h3>
+                <h3>About Us <span class="expand-icon">+</span></h3>
             </div>
             <div class="card-body">
-                <p>Lumino Studio Pty Ltd (ABN: 89695615233) is a registered Australian proprietary limited company based in Sydney. We are a software development studio dedicated to creating high-quality educational iOS applications for learners of all ages. Our vision is to support life-long learning using technology.</p>
+                <p>Lumino Studio Pty Ltd (ABN: 89695615233) is a registered Australian proprietary limited company based in Sydney. We are a software development studio dedicated to creating high-quality educational iOS applications for learners of all ages.</p>
+            </div>
+        </div>
+        
+        <div class="card" onclick="toggleCard(this)">
+            <div class="card-header">
+                <h3>Expertise <span class="expand-icon">+</span></h3>
+            </div>
+            <div class="card-body">
+                <ul class="skills-list">
+                    <li>AI & Machine Learning</li>
+                    <li>Educational App Development</li>
+                    <li>Data Science Visualization</li>
+                    <li>Creative Media & Design</li>
+                </ul>
             </div>
         </div>
     
-        <div class="card">
+        <div class="card" onclick="toggleCard(this)">
             <div class="card-header">
-                <h3>Our App: OmniSpark</h3>
+                <h3>Our App: OmniSpark <span class="expand-icon">+</span></h3>
             </div>
             <div class="card-body">
                 <p>(Forthcoming): An all-round skill-learning application for children, focusing on intuitive interaction and organic growth.</p>
             </div>
         </div>
-    </div>    
+    </div> 
 
     <div class="contact-area">
         <a href="mailto:info@lumino.au" class="cta-button">Get In Touch</a>
@@ -341,6 +364,22 @@
             }
         };
 
+        function toggleCard(selectedCard) {
+            const allCards = document.querySelectorAll('.card');
+            
+            // Check if the clicked card is already open
+            const isAlreadyExpanded = selectedCard.classList.contains('expanded');
+        
+            // Step 1: Retract ALL cards
+            allCards.forEach(card => {
+                card.classList.remove('expanded');
+            });
+        
+            // Step 2: If the clicked card wasn't already open, expand it now
+            if (!isAlreadyExpanded) {
+                selectedCard.classList.add('expanded');
+            }
+        }
     </script>
 
 </body>
