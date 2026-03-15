@@ -10,8 +10,7 @@
     <style>
         :root {
             /* Rainbow palette based on your logo */
-            /* 90deg ensures a perfect Left-to-Right flow */
-            --rainbow-grad: linear-gradient(90deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            --rainbow-grad: linear-gradient(to right, -45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
         }
 
         body {
@@ -45,6 +44,18 @@
             100% { background-position: 0% 0%; }
         }
 
+        /* Subtle Rainbow Border at the top */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--rainbow-grad);
+            background-size: 400% 400%;
+            animation: gradientBG 5s ease infinite;
+        }
+
         .logo-container {
             position: relative;
             z-index: 10;
@@ -55,9 +66,8 @@
             max-width: 320px;
             height: auto;
             /* This creates a multi-layered glow effect */
-            /* Red/Orange glow on the Left (-15px), Blue/Teal on the Right (15px) */
-            filter: drop-shadow(-15px 0 20px rgba(238, 119, 82, 0.4)) 
-                    drop-shadow(15px 0 20px rgba(35, 213, 171, 0.4));
+            filter: drop-shadow(-10px 0 15px rgba(231, 60, 126, 0.4))  /* Pink/Red glow on left */
+                    drop-shadow(10px 0 15px rgba(35, 166, 213, 0.4)); /* Blue/Cyan glow on right */
             transition: all 0.5s ease;
         }
 
@@ -75,29 +85,28 @@
             margin-top: 30px;
             margin-bottom: 10px;
             text-transform: uppercase;
-            
-            /* Static Rainbow Gradient */
+            /* Horizontal Rainbow Gradient */
             background: linear-gradient(
                 to right, 
-                #a855f7, #ec4899, #3b82f6, #22c55e, #eab308, #ef4444
+                #a855f7, /* Purple */
+                #ec4899, /* Pink */
+                #3b82f6, /* Blue */
+                #22c55e, /* Green */
+                #eab308, /* Yellow */
+                #ef4444  /* Red */
             );
+            background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-        
-            /* The Glow */
-            filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.4));
-        
-            /* The Color-Cycle Animation */
-            animation: colorCycle 8s linear infinite;
-            
-            display: inline-block;
+            animation: shine 3s linear infinite;
         }
 
-        @keyframes colorCycle {
-            0% { filter: hue-rotate(0deg) drop-shadow(0 0 10px rgba(168, 85, 247, 0.4)); }
-            100% { filter: hue-rotate(360deg) drop-shadow(0 0 10px rgba(168, 85, 247, 0.4)); }
+        @keyframes shine {
+            /* This makes the rainbow colors "crawl" across the text */
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
         }
-        
+
         p {
             font-size: 1.1rem;
             color: #8892b0;
@@ -221,95 +230,6 @@
             0% { transform: translateX(-20%) translateY(-20%); }
             100% { transform: translateX(20%) translateY(20%); }
         }
-
-        .site-footer {
-            margin-top: 80px;
-            padding: 40px 20px;
-            width: 100%;
-            max-width: 800px;
-            display: flex;
-            flex-direction: column; /* Stacks items on mobile */
-            align-items: center;
-            gap: 15px; /* Creates vertical space between copyright and links */
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .footer-copyright {
-            color: #444;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px; /* Forced 30px gap between links */
-            margin-top: 10px;
-        }
-        
-        .footer-links a {
-            position: relative;
-        }
-        
-        /* Optional: Add a little vertical divider line via CSS */
-        .footer-links a:not(:last-child)::after {
-            content: "";
-            position: absolute;
-            right: -15px;
-            top: 20%;
-            height: 60%;
-            width: 1px;
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        .footer-links a {
-            color: #64ffda;
-            text-decoration: none;
-            font-size: 0.85rem;
-            transition: color 0.3s ease;
-        }
-        
-        .footer-links a:hover {
-            color: #e73c7e; /* Shifts to your logo's pink on hover */
-        }
-        
-        .separator {
-            color: #333;
-            font-size: 0.8rem;
-        }
-        
-        /* Desktop adjustment: keeps them side-by-side if there is room */
-        @media (min-width: 600px) {
-            .site-footer {
-                flex-direction: row;
-                justify-content: space-between;
-            }
-        }
-
-        #backToTop {
-            display: none;
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 99;
-            border: none;
-            outline: none;
-            background: var(--rainbow-grad);
-            background-size: 200% auto;
-            color: white;
-            cursor: pointer;
-            padding: 15px;
-            border-radius: 50%;
-            font-size: 18px;
-            width: 50px;
-            height: 50px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease;
-        }
-        
-        #backToTop:hover {
-            transform: scale(1.1);
-        }
     </style>
 </head>
 <body>
@@ -349,34 +269,12 @@
     <div class="contact-area">
         <a href="mailto:info@lumino.au" class="cta-button">Get In Touch</a>
     </div>
-    
-    <footer class="site-footer">
-        <div class="footer-copyright">
-            &copy; 2026 Lumino Studio Pty Ltd. ABN: 89695615233. All rights reserved.
-        </div>
-        <div class="footer-links">
-            <a href="privacy.html">Privacy Policy</a>
-            <span class="separator">•</span>
-            <a href="support.html">Support & Terms</a>
-        </div>
+
+    <footer style="margin-top: 50px; color: #444; font-size: 0.8rem;">
+        &copy; 2026 Lumino Studio Pty Ltd. ABN: 89695615233. All rights reserved.
+        <a href="privacy.html" style="color: #64ffda; text-decoration: none;">Privacy Policy</a>
+        <a href="support.html" style="color: #64ffda; text-decoration: none;">Support & Terms</a>
     </footer>
 
-    <button onclick="scrollToTop()" id="backToTop" title="Go to top">↑</button>
-
-    <script>
-        // Show button when user scrolls down 300px
-        window.onscroll = function() {
-            const btn = document.getElementById("backToTop");
-            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                btn.style.display = "block";
-            } else {
-                btn.style.display = "none";
-            }
-        };
-    
-        function scrollToTop() {
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        }
-    </script>    
 </body>
 </html>
