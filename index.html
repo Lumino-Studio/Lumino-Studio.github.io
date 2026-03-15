@@ -10,7 +10,8 @@
     <style>
         :root {
             /* Rainbow palette based on your logo */
-            --rainbow-grad: linear-gradient(to right, -45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            /* 90deg ensures a perfect Left-to-Right flow */
+            --rainbow-grad: linear-gradient(90deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
         }
 
         body {
@@ -66,8 +67,9 @@
             max-width: 320px;
             height: auto;
             /* This creates a multi-layered glow effect */
-            filter: drop-shadow(-10px 0 15px rgba(231, 60, 126, 0.4))  /* Pink/Red glow on left */
-                    drop-shadow(10px 0 15px rgba(35, 166, 213, 0.4)); /* Blue/Cyan glow on right */
+            /* Red/Orange glow on the Left (-15px), Blue/Teal on the Right (15px) */
+            filter: drop-shadow(-15px 0 20px rgba(238, 119, 82, 0.4)) 
+                    drop-shadow(15px 0 20px rgba(35, 213, 171, 0.4));
             transition: all 0.5s ease;
         }
 
@@ -102,9 +104,8 @@
         }
 
         @keyframes shine {
-            /* This makes the rainbow colors "crawl" across the text */
             0% { background-position: 0% center; }
-            100% { background-position: 200% center; }
+            100% { background-position: 200% center; } /* Pushes the gradient toward the right */
         }
 
         p {
@@ -230,6 +231,54 @@
             0% { transform: translateX(-20%) translateY(-20%); }
             100% { transform: translateX(20%) translateY(20%); }
         }
+
+        .site-footer {
+            margin-top: 80px;
+            padding: 40px 20px;
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column; /* Stacks items on mobile */
+            align-items: center;
+            gap: 15px; /* Creates vertical space between copyright and links */
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .footer-copyright {
+            color: #444;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+        
+        .footer-links {
+            display: flex;
+            align-items: center;
+            gap: 20px; /* This specifically pushes the two links apart */
+        }
+        
+        .footer-links a {
+            color: #64ffda;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: #e73c7e; /* Shifts to your logo's pink on hover */
+        }
+        
+        .separator {
+            color: #333;
+            font-size: 0.8rem;
+        }
+        
+        /* Desktop adjustment: keeps them side-by-side if there is room */
+        @media (min-width: 600px) {
+            .site-footer {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
     </style>
 </head>
 <body>
@@ -269,11 +318,16 @@
     <div class="contact-area">
         <a href="mailto:info@lumino.au" class="cta-button">Get In Touch</a>
     </div>
-
-    <footer style="margin-top: 50px; color: #444; font-size: 0.8rem;">
-        &copy; 2026 Lumino Studio Pty Ltd. ABN: 89695615233. All rights reserved.
-        <a href="privacy.html" style="color: #64ffda; text-decoration: none;">Privacy Policy</a>
-        <a href="support.html" style="color: #64ffda; text-decoration: none;">Support & Terms</a>
+    
+    <footer class="site-footer">
+        <div class="footer-copyright">
+            &copy; 2026 Lumino Studio Pty Ltd. ABN: 89695615233. All rights reserved.
+        </div>
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <span class="separator">•</span>
+            <a href="support.html">Support & Terms</a>
+        </div>
     </footer>
 
 </body>
