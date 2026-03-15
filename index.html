@@ -13,6 +13,17 @@
             --rainbow-grad: linear-gradient(90deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
         }
 
+        ::selection {
+            background: rgba(231, 60, 126, 0.3); /* Semi-transparent Pink */
+            color: #ffffff; /* White text when highlighted */
+        }
+        
+        /* For Safari/Firefox support */
+        ::-moz-selection {
+            background: rgba(231, 60, 126, 0.3);
+            color: #ffffff;
+        }
+        
         body {
             margin: 0;
             padding: 50px 0; /* Add padding so content doesn't touch the edges */
@@ -176,13 +187,17 @@
         
         .card-header h3 {
             margin: 0;
-            width: 100%; /* Ensures the icon pushes to the right */
+            width: 100%;
             color: #e73c7e;
             font-size: 1.1rem;
             text-transform: uppercase;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            line-height: 1;
+            
+            /* ADD THIS LINE FOR SMOOTH HOVER */
+            transition: text-shadow 0.3s ease, color 0.3s ease; 
         }
         
         .card-body {
@@ -291,6 +306,19 @@
             cursor: pointer;
             font-size: 20px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+
+        /* This adds the illuminated aura to the title on hover */
+        .card:hover .card-header h3 {
+            text-shadow: 0 0 8px rgba(231, 60, 126, 0.6), /* Initial Pink shadow */
+                         0 0 15px rgba(231, 60, 126, 0.3), /* Wider, softer Pink shadow */
+                         0 0 20px rgba(168, 85, 247, 0.1); /* Very subtle Purple edge */
+        }
+        
+        /* This adds a glow to the expand-icon on hover */
+        .card:hover .expand-icon {
+            color: white; /* Optional: Make the icon turn white on hover */
+            text-shadow: 0 0 8px rgba(100, 255, 218, 0.7); /* Teal glow */
         }
         
         /* Mobile Responsive */
