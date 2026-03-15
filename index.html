@@ -87,7 +87,8 @@
             margin-top: 30px;
             margin-bottom: 10px;
             text-transform: uppercase;
-            /* Horizontal Rainbow Gradient */
+            
+            /* Horizontal Rainbow Gradient - FIXED (No Sweep) */
             background: linear-gradient(
                 to right, 
                 #a855f7, /* Purple */
@@ -97,15 +98,13 @@
                 #eab308, /* Yellow */
                 #ef4444  /* Red */
             );
-            background-size: 200% auto;
+            
+            /* Set background-clip to text and make text transparent */
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: shine 3s linear infinite;
-        }
-
-        @keyframes shine {
-            0% { background-position: 0% center; }
-            100% { background-position: 200% center; } /* Pushes the gradient toward the right */
+            
+            /* Removed the animation and background-size properties */
+            display: inline-block;
         }
 
         p {
