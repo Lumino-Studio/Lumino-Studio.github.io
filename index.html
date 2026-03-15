@@ -149,71 +149,74 @@
             cursor: pointer;
             overflow: hidden;
             
-            /* Set a consistent height for the collapsed state */
+            /* Use a slightly larger max-height for the collapsed state */
             max-height: 70px; 
             
+            /* Smooth transition for opening and closing */
             transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease;
             width: 100%;
+            
+            /* These two lines ensure the header stays centered vertically */
             display: flex;
             flex-direction: column;
-
-            -webkit-tap-highlight-color: transparent; /* Removes the blue box when tapping on mobile */
         }
         
         .card.expanded {
-            max-height: 1000px; /* Expands to fit content */
+            max-height: 1000px; /* Large enough for all content */
         }
         
         .card-header {
-            /* This height must match the card's collapsed max-height */
-            height: 70px; 
+            /* flex-grow ensures the header takes up the available space when collapsed */
+            flex: 0 0 70px; 
             display: flex;
-            align-items: center; /* Vertically centers the header text */
-            padding: 0 25px;
+            align-items: center; /* This vertically centers the text */
+            padding: 0 25px;    /* Removed vertical padding to let flex-alignment work */
             box-sizing: border-box;
         }
         
         .card-header h3 {
             margin: 0;
-            width: 100%;
+            width: 100%; /* Ensures the icon pushes to the right */
             color: #e73c7e;
             font-size: 1.1rem;
             text-transform: uppercase;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            line-height: 1; /* Prevents font leading from pushing text down */
         }
         
         .card-body {
-            padding: 10px 25px 30px 25px;
+            padding: 10px 25px 30px 25px; /* Added back a bit of top padding for the body text */
             opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.4s ease, visibility 0.4s ease;
+            transition: opacity 0.4s ease;
+            width: 100%;
+            box-sizing: border-box;
         }
         
-        .card.expanded .card-body {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .expand-icon {
-            color: #64ffda;
-            font-size: 1.5rem;
-            transition: transform 0.3s ease;
-        }
-        
-        .card.expanded .expand-icon {
-            transform: rotate(45deg);
-            color: #ef4444;
-        }
-
         /* Make text inside the body use the full width */
         .card-body p {
             width: 100%;
             max-width: none; /* Removes any previous 500px limits */
             text-align: justify; /* Optional: gives a clean 'block' look to text */
             margin-bottom: 15px;
+        }
+        
+        .card.expanded .card-body {
+            display: block;
+            opacity: 1;
+            /* This delay makes the text appear AFTER the card slides open */
+            transition: opacity 0.5s ease 0.2s;
+        }
+
+        .expand-icon {
+            float: right;
+            color: #64ffda;
+            transition: transform 0.3s ease;
+        }
+        
+        .card.expanded .expand-icon {
+            transform: rotate(45deg);
+            color: #ef4444; /* Changes to red/pink when open */
         }
         
         /* Improved Skills List to fill space */
@@ -349,7 +352,8 @@
                 <h3>About Us <span class="expand-icon">+</span></h3>
             </div>
             <div class="card-body">
-                <p>Lumino Studio Pty Ltd (ABN: 89695615233) is a registered Australian proprietary limited company based in Sydney. We are a software development studio dedicated to creating high-quality educational iOS applications for learners of all ages. Our mission is to support life-long learning using technology.</p>
+                <p>Lumino Studio Pty Ltd (ABN: 89695615233) is a registered Australian proprietary limited company based in Sydney. We are a software development studio dedicated to creating high-quality educational iOS applications for learners of all ages. <br>
+                    Our mission is to support life-long learning using technology.</p>
             </div>
         </div>
     
@@ -358,7 +362,7 @@
                 <h3>Our APPs <span class="expand-icon">+</span></h3>
             </div>
             <div class="card-body">
-                <p>OmniSpark (Forthcoming): An all-round skill-learning application for children, focusing on intuitive interaction and organic growth.</p>
+                <p><strong>OmniSpark</strong> (Forthcoming): An all-round skill-learning application for children, focusing on intuitive interaction and organic growth.</p>
             </div>
         </div>
 
@@ -367,7 +371,7 @@
                 <h3>Contact Us <span class="expand-icon">+</span></h3>
             </div>
             <div class="card-body">
-                <p>If you have any questions or support requests, please reach out to us at: <a href="mailto:info@lumino.au">info@lumino.au</a>. We will respond in 48 hours.</p>
+                <p>If you have any questions or support requests, please reach out to us at: info@lumino.au. We will respond in 48 hours.</p>
             </div>
         </div>
     </div> 
