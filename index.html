@@ -252,8 +252,24 @@
         
         .footer-links {
             display: flex;
-            align-items: center;
-            gap: 20px; /* This specifically pushes the two links apart */
+            justify-content: center;
+            gap: 30px; /* Forced 30px gap between links */
+            margin-top: 10px;
+        }
+        
+        .footer-links a {
+            position: relative;
+        }
+        
+        /* Optional: Add a little vertical divider line via CSS */
+        .footer-links a:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            right: -15px;
+            top: 20%;
+            height: 60%;
+            width: 1px;
+            background: rgba(255, 255, 255, 0.1);
         }
         
         .footer-links a {
@@ -278,6 +294,31 @@
                 flex-direction: row;
                 justify-content: space-between;
             }
+        }
+
+        #backToTop {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background: var(--rainbow-grad);
+            background-size: 200% auto;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 18px;
+            width: 50px;
+            height: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        #backToTop:hover {
+            transform: scale(1.1);
         }
     </style>
 </head>
@@ -330,5 +371,22 @@
         </div>
     </footer>
 
+    <button onclick="scrollToTop()" id="backToTop" title="Go to top">↑</button>
+
+    <script>
+        // Show button when user scrolls down 300px
+        window.onscroll = function() {
+            const btn = document.getElementById("backToTop");
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        };
+    
+        function scrollToTop() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+    </script>    
 </body>
 </html>
