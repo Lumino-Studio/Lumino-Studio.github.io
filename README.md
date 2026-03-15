@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.png" alt="Lumino Studio Logo" width="200">
+</p>
+
 Welcome to our official website.
 
 ## About Us
