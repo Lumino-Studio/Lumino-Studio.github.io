@@ -148,16 +148,59 @@
             border-image: linear-gradient(to right, #e73c7e, #23a6d5) 1;
             cursor: pointer;
             overflow: hidden;
-            max-height: 60px; 
+            
+            /* Use a slightly larger max-height for the collapsed state */
+            max-height: 70px; 
+            
+            /* Smooth transition for opening and closing */
             transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease;
-            width: 100%; /* Ensure card takes full container width */
+            width: 100%;
+            
+            /* These two lines ensure the header stays centered vertically */
+            display: flex;
+            flex-direction: column;
         }
         
         .card.expanded {
-            max-height: 1000px; /* High enough to never cut off text */
-            background: rgba(255, 255, 255, 0.08);
+            max-height: 1000px; /* Large enough for all content */
         }
-
+        
+        .card-header {
+            /* flex-grow ensures the header takes up the available space when collapsed */
+            flex: 0 0 70px; 
+            display: flex;
+            align-items: center; /* This vertically centers the text */
+            padding: 0 25px;    /* Removed vertical padding to let flex-alignment work */
+            box-sizing: border-box;
+        }
+        
+        .card-header h3 {
+            margin: 0;
+            width: 100%; /* Ensures the icon pushes to the right */
+            color: #e73c7e;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .card-body {
+            padding: 10px 25px 30px 25px; /* Added back a bit of top padding for the body text */
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        /* Make text inside the body use the full width */
+        .card-body p {
+            width: 100%;
+            max-width: none; /* Removes any previous 500px limits */
+            text-align: justify; /* Optional: gives a clean 'block' look to text */
+            margin-bottom: 15px;
+        }
+        
         .card.expanded .card-body {
             display: block;
             opacity: 1;
@@ -174,26 +217,6 @@
         .card.expanded .expand-icon {
             transform: rotate(45deg);
             color: #ef4444; /* Changes to red/pink when open */
-        }
-        
-        .card-header {
-            padding: 18px 25px;
-        }
-        
-        .card-body {
-            padding: 0 25px 30px 25px; /* Matching horizontal padding to header */
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            width: 100%;
-            box-sizing: border-box; /* Includes padding in width calculation */
-        }
-        
-        /* Make text inside the body use the full width */
-        .card-body p {
-            width: 100%;
-            max-width: none; /* Removes any previous 500px limits */
-            text-align: justify; /* Optional: gives a clean 'block' look to text */
-            margin-bottom: 15px;
         }
         
         /* Improved Skills List to fill space */
@@ -280,6 +303,8 @@
                 height: auto;
                 padding: 50px 0;
             }
+            .card { max-height: 60px; }
+            .card-header { flex: 0 0 60px; }
             .card-body p {
                 text-align: left;
             }
