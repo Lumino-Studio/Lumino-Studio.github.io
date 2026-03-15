@@ -45,18 +45,6 @@
             100% { background-position: 0% 0%; }
         }
 
-        /* Subtle Rainbow Border at the top */
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--rainbow-grad);
-            background-size: 400% 400%;
-            animation: gradientBG 5s ease infinite;
-        }
-
         .logo-container {
             position: relative;
             z-index: 10;
@@ -88,22 +76,18 @@
             margin-bottom: 10px;
             text-transform: uppercase;
             
-            /* Horizontal Rainbow Gradient - FIXED (No Sweep) */
+            /* The Rainbow Gradient */
             background: linear-gradient(
                 to right, 
-                #a855f7, /* Purple */
-                #ec4899, /* Pink */
-                #3b82f6, /* Blue */
-                #22c55e, /* Green */
-                #eab308, /* Yellow */
-                #ef4444  /* Red */
+                #a855f7, #ec4899, #3b82f6, #22c55e, #eab308, #ef4444
             );
-            
-            /* Set background-clip to text and make text transparent */
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        
+            /* The Glow Effect (No sweeping/animation) */
+            filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.4)) 
+                    drop-shadow(0 0 20px rgba(59, 130, 246, 0.2));
             
-            /* Removed the animation and background-size properties */
             display: inline-block;
         }
 
