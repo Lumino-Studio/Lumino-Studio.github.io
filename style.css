@@ -1,4 +1,3 @@
-/* --- 1. CORE VARIABLES & SETUP --- */
 :root {
     /* Rainbow palette based on your logo */
     --rainbow-grad: linear-gradient(90deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
@@ -482,26 +481,32 @@ section {
     margin-bottom: 4px;
 }
 
-/* --- 2. GLOBAL TEXT RULES (Total Consistency) --- */
-p, li, span, label {
-    color: var(--grey-blue) !important;
+/* 1. Global Body Text (Paragraphs and Lists) */
+p, li {
+    color: #8892b0 !important; /* Forces the grey-blue color everywhere */
     line-height: 1.8;
 }
 
-h2, h3, h4, h5 {
-    color: var(--pink) !important;
+/* 2. Global Headings (Pink) */
+h2, h3 {
+    color: #e73c7e !important; /* Forces Lumino Pink for all section headers */
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-strong, b {
-    color: var(--teal) !important;
+/* 3. Global Highlights (Teal) */
+strong {
+    color: #64ffda !important; /* Forces the Teal color for bold text */
+    font-weight: 600;
 }
 
+/* 4. Global Links */
 a {
-    color: var(--blue);
+    color: #23a6d5;
     text-decoration: none;
     transition: 0.3s;
 }
 
-a:hover { color: var(--teal); }
+a:hover {
+    color: #64ffda;
+}
