@@ -327,6 +327,12 @@ p, li {
     }
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .light-beam, body, h1 {
+        animation: none !important;
+    }
+}
+
 .light-beam {
     position: fixed;
     top: -50%;
@@ -334,19 +340,25 @@ p, li {
     width: 200%;
     height: 200%;
     z-index: 1;
-    pointer-events: none; /* Allows clicking through to buttons */
+    pointer-events: none;
     background: linear-gradient(
         45deg,
         transparent 45%,
         rgba(255, 255, 255, 0.03) 50%,
         transparent 55%
     );
-    animation: sweep 8s linear infinite;
+    
+    /* Changed 'linear' to 'ease-in-out' and added 'alternate' */
+    animation: sweep 12s ease-in-out infinite alternate;
 }
 
 @keyframes sweep {
-    0% { transform: translateX(-20%) translateY(-20%); }
-    100% { transform: translateX(20%) translateY(20%); }
+    0% { 
+        transform: translate(-15%, -15%) rotate(0deg); 
+    }
+    100% { 
+        transform: translate(15%, 15%) rotate(5deg); 
+    }
 }
 
 /* Container for legal pages to keep text readable */
