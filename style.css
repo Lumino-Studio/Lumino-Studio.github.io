@@ -45,6 +45,54 @@ body {
     100% { background-position: 0% 0%; }
 }
 
+.main-nav {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(2, 12, 27, 0.9); /* Translucent Navy */
+    backdrop-filter: blur(10px); /* Modern frosted glass effect */
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 15px 0;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.nav-item {
+    color: #8892b0; /* Your grey-blue body text color */
+    text-decoration: none;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-item:hover {
+    color: #64ffda; /* Your signature Teal */
+}
+
+/* The "Active" tab highlight */
+.nav-item.active {
+    color: white;
+}
+
+.nav-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--rainbow-grad); /* Your rainbow gradient bar */
+}
+
 .logo-container {
     position: relative;
     z-index: 10;
