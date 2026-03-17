@@ -136,7 +136,7 @@
                     </div>
                     <input type="hidden" name="_next" value="success.html">
                     <button type="submit" class="submit-btn">Send Message</button>
-                </form>
+                </form>    
             </div>
         </div>
 
@@ -151,6 +151,7 @@
             e.preventDefault(); 
     
             const formData = new FormData(contactForm);
+            // This line now works because the 'name' attributes exist!
             const data = Object.fromEntries(formData.entries());
     
             try {
@@ -164,15 +165,16 @@
                 });
     
                 if (response.ok) {
-                    // Success! Redirect to your success page
+                    // Smoothly transition to your success page
                     window.location.href = 'success.html';
                 } else {
-                    const result = await response.json();
-                    alert(result.errors ? result.errors[0].message : "Submission failed.");
+                    // If Formspree sends back an error, we can see why
+                    const errorData = await response.json();
+                    alert("Error: " + (errorData.errors ? errorData.errors[0].message : "Submission failed."));
                 }
             } catch (error) {
-                console.error("Error:", error);
-                alert("An error occurred. Please check your internet connection.");
+                console.error("Connection Error:", error);
+                alert("Could not reach the server. Please check your internet connection.");
             }
         });
     </script>
