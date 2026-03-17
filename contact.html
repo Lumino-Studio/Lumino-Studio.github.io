@@ -120,21 +120,21 @@
                 <form action="https://formspree.io/f/mnjggebq" method="POST">
                     <div class="form-group">
                         <label>Full Name</label>
-                        <input type="text" placeholder="Your Name" required>
+                        <input type="text" name="name" placeholder="Your Name" required>
                     </div>
                     <div class="form-group">
                         <label>Email Address</label>
-                        <input type="email" placeholder="email@example.com" required>
+                        <input type="email" name="email" placeholder="email@example.com" required>
                     </div>
                     <div class="form-group">
                         <label>Subject</label>
-                        <input type="text" placeholder="Project Inquiry / Support" required>
+                        <input type="text" name="subject" placeholder="Project Inquiry / Support" required>
                     </div>
                     <div class="form-group">
                         <label>Message</label>
-                        <textarea rows="5" placeholder="Tell us how we can help..." required></textarea>
+                        <textarea name="message" rows="5" placeholder="Tell us how we can help..." required></textarea>
                     </div>
-                    <input type="hidden" name="_next" value="https://yourwebsite.com/success.html">
+                    <input type="hidden" name="_next" value="success.html">
                     <button type="submit" class="submit-btn">Send Message</button>
                 </form>
             </div>
@@ -148,32 +148,31 @@
         const contactForm = document.querySelector('form');
     
         contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault(); // Stop the page from reloading
-        
-            // 1. Gather the data from the form fields
+            e.preventDefault(); 
+    
             const formData = new FormData(contactForm);
             const data = Object.fromEntries(formData.entries());
-        
+    
             try {
-                // 2. Send the data as a JSON string
                 const response = await fetch(contactForm.action, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                         'Accept': 'application/json'
                     },
-                    body: JSON.stringify(data) // This turns the object into a valid JSON string
+                    body: JSON.stringify(data)
                 });
-        
+    
                 if (response.ok) {
-                    // 3. Redirect to your success page on success
+                    // Success! Redirect to your success page
                     window.location.href = 'success.html';
                 } else {
-                    alert("Submission failed. Please check the data and try again.");
+                    const result = await response.json();
+                    alert(result.errors ? result.errors[0].message : "Submission failed.");
                 }
             } catch (error) {
                 console.error("Error:", error);
-                alert("An error occurred. Please try again later.");
+                alert("An error occurred. Please check your internet connection.");
             }
         });
     </script>
