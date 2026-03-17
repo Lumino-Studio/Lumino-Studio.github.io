@@ -348,16 +348,17 @@ p, li {
         transparent 55%
     );
     
-    /* Changed 'linear' to 'ease-in-out' and added 'alternate' */
-    animation: sweep 12s ease-in-out infinite alternate;
+    /* We use 'alternate' so it plays forward then backward */
+    /* We use 'ease-in-out' to make the transition at the ends invisible */
+    animation: sweep 15s ease-in-out infinite alternate !important;
 }
 
 @keyframes sweep {
     0% { 
-        transform: translate(-15%, -15%) rotate(0deg); 
+        transform: translate(-10%, -10%); 
     }
     100% { 
-        transform: translate(15%, 15%) rotate(5deg); 
+        transform: translate(10%, 10%); 
     }
 }
 
@@ -431,6 +432,25 @@ p, li {
     color: #e73c7e !important; /* Switches to Lumino Pink on hover */
     border-bottom: 1px solid #e73c7e;
     text-shadow: 0 0 10px rgba(231, 60, 126, 0.5); /* Adds a "light-up" effect */
+}
+
+/* This targets ANY link containing 'mailto' anywhere on the site */
+a[href^="mailto:"] {
+    color: #64ffda !important; /* Force Teal */
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    transition: 0.3s ease;
+}
+
+/* Ensure it stays bright even after being clicked */
+a[href^="mailto:"]:visited {
+    color: #64ffda !important;
+}
+
+/* Glow effect on hover */
+a[href^="mailto:"]:hover {
+    color: #e73c7e !important; /* Turns Pink on hover */
+    text-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
 }
 
 /* Back Button Styling */
