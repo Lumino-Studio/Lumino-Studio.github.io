@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Lumino Studio</title>
+    <link rel="icon" href="assets/favicon.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Contact Form Specifics */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 40px;
+            width: 100%;
+        }
+
+        .contact-info h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: #64ffda;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(2, 12, 27, 0.8);
+            border: 1px solid rgba(136, 146, 176, 0.3);
+            border-radius: 5px;
+            color: white;
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #e73c7e;
+            box-shadow: 0 0 10px rgba(231, 60, 126, 0.2);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: transparent;
+            border: 2px solid;
+            border-image: var(--rainbow-grad) 1;
+            color: white;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: var(--rainbow-grad);
+            color: #020c1b;
+            border-image: none;
+        }
+
+        @media (max-width: 850px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="light-beam" style="animation: sweep 15s ease-in-out infinite alternate !important;"></div>
+
+    <nav class="main-nav">
+        <div class="nav-links">
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="about.html" class="nav-item">About Us</a>
+            <a href="products.html" class="nav-item">Products</a>
+            <a href="contact.html" class="nav-item active">Contact Us</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Connect with us</h1>
+        <p>Have a question about our applications or looking to collaborate on an educational project? We'd love to hear from you.</p>
+
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Sydney Based.<br>Global Vision.</h2>
+                <p>We are currently operating out of Sydney, NSW, and are open to inquiries regarding software partnerships, educational consultations, or support.</p>
+                
+                <div class="contact-box" style="margin-top: 30px;">
+                    <strong>Direct Email:</strong><br>
+                    <a href="mailto:info@lumino.au" style="color: #64ffda !important; font-weight: 600; text-decoration: none;">info@lumino.au</a>
+                </div>
+
+                <div class="contact-box">
+                    <strong>Business Hours:</strong><br>
+                    Monday — Friday: 9:00 AM - 5:00 PM (AEDT)
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="email@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Subject</label>
+                        <input type="text" placeholder="Project Inquiry / Support" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea rows="5" placeholder="Tell us how we can help..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+
+        <footer>
+            &copy; 2026 Lumino Studio. ABN: 89695615233. Sydney, Australia.
+        </footer>
+    </div>
+
+</body>
+</html>
