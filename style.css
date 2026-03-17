@@ -406,6 +406,21 @@ p, li {
     width: 100%;
 }
 
+/* Specifically target the email link in the footer and contact sections */
+.container a[href^="mailto:"] {
+    color: #64ffda !important; /* Bright Teal for high visibility */
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px dashed rgba(100, 255, 218, 0.3); /* Adds a subtle underline */
+    transition: all 0.3s ease;
+}
+
+.container a[href^="mailto:"]:hover {
+    color: #e73c7e !important; /* Switches to Lumino Pink on hover */
+    border-bottom: 1px solid #e73c7e;
+    text-shadow: 0 0 10px rgba(231, 60, 126, 0.5); /* Adds a "light-up" effect */
+}
+
 /* Back Button Styling */
 .back-home {
     position: fixed;
@@ -460,6 +475,11 @@ section {
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 0.9rem;
+}
+
+.contact-box a {
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
 }
 
 /* Specific styling for the Terms list */
