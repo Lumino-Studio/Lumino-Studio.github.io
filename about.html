@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Lumino Studio</title>
+    <link rel="icon" href="assets/favicon.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="light-beam" style="animation: sweep 15s ease-in-out infinite alternate !important;"></div>
+
+    <nav class="main-nav">
+        <div class="nav-links">
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="about.html" class="nav-item active">About Us</a>
+            <a href="products.html" class="nav-item">Products</a>
+            <a href="contact.html" class="nav-item">Contact Us</a>
+        </div>
+    </nav>
+
+    <a href="index.html" class="back-home">← Back to Home</a>
+
+    <div class="container">
+        <h1>Our Story</h1>
+        
+        <section>
+            <h2>Bridging Technology & Education</h2>
+            <p>
+                Based in Sydney, Australia, <strong>Lumino Studio</strong> was founded with a clear mission: to create digital experiences that make complex skills accessible. We believe that software should be more than just a tool—it should be an invitation to discover.
+            </p>
+            <p>
+                Our focus is on developing high-quality iOS and iPad applications that help children and lifelong learners master everything from the fundamentals of mathematics to the intricacies of music theory and language.
+            </p>
+        </section>
+
+        <section>
+            <h2>The Lumino Philosophy</h2>
+            <div class="content-section" style="margin: 20px 0; padding: 0;">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Focus on Learning</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>We prioritize cognitive ease. Our apps are designed to minimize distraction and maximize engagement through clean, intuitive interfaces that respect the learner's journey.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Privacy First</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>In an era of data-tracking, we take a different path. We believe educational tools should be safe havens for exploration, which is why we collect no personal data from our users.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Our Expertise</h2>
+            <p>
+                With a deep technical foundation in <strong>Swift, Python, and Data Visualization</strong>, we combine engineering rigor with a confident, approachable aesthetic. Whether we are building an analog clock simulator or a Cantonese language module, every pixel is placed with purpose.
+            </p>
+        </section>
+
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <p>
+                We are always open to collaboration and feedback. If you have questions about our applications or our development process, please reach out.
+            </p>
+            <div class="contact-box">
+                <strong>General Inquiries:</strong><br>
+                Email: <a href="mailto:info@lumino.au" style="color: #64ffda !important; font-weight: 600; text-decoration: none;">info@lumino.au</a><br>
+                Location: Sydney, NSW, Australia
+            </div>
+        </section>
+
+        <footer>
+            &copy; 2026 Lumino Studio. ABN: 89695615233. Sydney, Australia.
+        </footer>
+    </div>
+
+    <script>
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.toggle('expanded');
+            });
+        });
+    </script>
+
+</body>
+</html>
